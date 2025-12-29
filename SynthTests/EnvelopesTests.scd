@@ -98,28 +98,3 @@ Env.new([0,1,0.2,0],[4,5,3], [3,-2,0]).plot;
 
 }.play;
 )
-
-(
-{
-	var sig, env, baseFreq = 220;
-	var lfo = LFNoise2.kr(0.1).range(0.99, 1.01);
-
-	env = EnvGen.kr(Env.new([0, 0.6, 0.4, 0], [5, 8, 7], \sin), doneAction: 2);
-
-	// Root + Fifth + Octave + Major Seventh
-	sig = [
-		Pulse.ar(baseFreq, 0.3),          // Root
-		LFTri.ar(baseFreq * 1.5 * lfo),   // Fifth with slight detune
-		SinOsc.ar(baseFreq * 2),          // Octave
-		SinOsc.ar(baseFreq * 1.889)       // Major seventh
-	] * [1, 0.8, 0.5, 0.7] * env * 0.2;
-
-	sig = Splay.ar(sig, spread: 1.0);
-
-	// Add some modulation effects
-	sig = sig + (CombC.ar(sig, 0.5, 0.15, 2) * 0.3);
-	sig = FreeVerb.ar(sig, 0.8, 0.9, 0.6);
-	sig = LPF.ar(sig, 2000);
-
-}.play;
-)
