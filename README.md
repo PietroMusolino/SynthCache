@@ -1,0 +1,2 @@
+# SynthCache
+Some superCollider stuff
