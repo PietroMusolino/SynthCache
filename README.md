@@ -1,2 +1,2 @@
 # SynthCache
-Some superCollider stuff :)
+Some superCollider stuff
